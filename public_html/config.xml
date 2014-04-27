@@ -30,6 +30,7 @@
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="hu.dpal.phonegap.plugins.pindialog" version="0.1.2" />
+    <gap:plugin name="hu.dpal.phonegap.plugins.contactnumberpicker" version="0.1.1" />
     <gap:platform name="android" />
 
 
