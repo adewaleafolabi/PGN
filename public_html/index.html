@@ -17,7 +17,7 @@ and open the template in the editor.
         <img src="" id="customerPhoto"/>
         <button onclick="capturePhoto()">Smile</button>
         <button onclick="alert(device_info)">Device Info</button>
-        <button onclick="otp()">OTP</button>
+        <button onclick="otp()">CONTACT</button>
         <input type="date" />
         <script type="text/javascript">
             // var otp = prompt("Please provide an otp", "");
@@ -129,8 +129,18 @@ function dump(arr,level) {
                 regObj2.innerHTML = dump(text);
             }
             function otp(){
-                window.plugins.pinDialog.prompt("Please provide the OTP", callback, "title", ["OK","Cancel"]);
+                window.plugins.contactNumberPicker.pick(successCallback,failedCallback);
             }
+            var successCallback = function(result){
+    setTimeout(function(){
+    	 var regObj2 = document.getElementById('img_64');
+    	 regObj2.innerHTML += (result.name + " " + result.phoneNumber);
+    	 },0);
+};
+var failedCallback = function(result){
+    setTimeout(function(){alert(result);},0);
+}
+
 
         </script>
     </body>
