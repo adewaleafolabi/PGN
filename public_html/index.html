@@ -10,127 +10,21 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="pickaday.js"></script>
+        <link rel="stylesheet" href="pickaday.css">
     </head>
     <body>
-        <div>TODO write content</div>
-        <p id="img_64"></p>
-        <img src="" id="customerPhoto"/>
-        <button onclick="capturePhoto()">Smile</button>
-        <button onclick="alert(device_info)">Device Info</button>
-        <button onclick="otp()">OTP</button>
-        <input type="date" />
+
+
+        <input type="text" readonly id="myDate"><button id="show-cal">DATE PLUG</button>
+
         <script type="text/javascript">
-            // var otp = prompt("Please provide an otp", "");
-
-            var pictureSource;   // picture source
-            var destinationType; // sets the format of returned value
-            var device_info="";
-
-// Wait for device API libraries to load
-//
-            document.addEventListener("deviceready", onDeviceReady, false);
-
-// device APIs are available
-//
-            function onDeviceReady() {
-                pictureSource = navigator.camera.PictureSourceType;
-                destinationType = navigator.camera.DestinationType;
-                 device_info = 'Device Platform: ' + device.platform + '<br/>' +
-                        'Device UUID: ' + device.uuid + '<br/>' +
-                        'Device Model: ' + device.model + '<br/>' +
-                        'Device Version: ' + device.version + '';
-            }
-
-// Called when a photo is successfully retrieved
-//
-            function onPhotoDataSuccess(imageData) {
-                // Uncomment to view the base64-encoded image data
-                // console.log(imageData);
-
-                // Get image handle
-                //
-                var smallImage = document.getElementById('customerPhoto');
-
-
-                // Unhide image elements
-                smallImage.style.display = 'block';
-
-
-
-
-                // Show the captured photo
-                // The in-line CSS rules are used to resize the image
-
-                var img_src = "data:image/jpeg;base64," + imageData;
-                smallImage.src = img_src;
-
-                
-
-
-            }
-
-// Called if something bad happens.
-//
-            function onFail(message) {
-                console.log('Failed because: ' + message);
-            }
-
-// A button will call this function
-            function capturePhoto() {
-                // Take picture using device camera and retrieve image as base64-encoded string
-                navigator.camera.getPicture(onPhotoDataSuccess, onFail,
-                        {correctOrientation: 1,
-                            quality: 100,
-                            targetWidth: 150,
-                            targetHeight: 150,
-                            destinationType: destinationType.DATA_URL});
-            }
-            
-            /**
- * Function : dump()
- * Arguments: The data - array,hash(associative array),object
- *    The level - OPTIONAL
- * Returns  : The textual representation of the array.
- * This function was inspired by the print_r function of PHP.
- * This will accept some data as the argument and return a
- * text that will be a more readable version of the
- * array/hash/object that is given.
- * Docs: http://www.openjs.com/scripts/others/dump_function_php_print_r.php
- */
-function dump(arr,level) {
-	var dumped_text = "";
-	if(!level) level = 0;
-	
-	//The padding given at the beginning of the line.
-	var level_padding = "";
-	for(var j=0;j<level+1;j++) level_padding += "    ";
-	
-	if(typeof(arr) == 'object') { //Array/Hashes/Objects 
-		for(var item in arr) {
-			var value = arr[item];
-			
-			if(typeof(value) == 'object') { //If it is an array,
-				dumped_text += level_padding + "'" + item + "' ...\n";
-				dumped_text += dump(value,level+1);
-			} else {
-				dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-			}
-		}
-	} else { //Stings/Chars/Numbers etc.
-		dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
-	}
-	return dumped_text;
-}
-            
-            
-            
-            function callback(text){
-                var regObj2 = document.getElementById('img_64');
-                regObj2.innerHTML = dump(text);
-            }
-            function otp(){
-                window.plugins.pinDialog.prompt("Please provide the OTP", callback, "title", ["OK","Cancel"]);
-            }
+            new Pikaday(
+                    {
+                        field: document.getElementById('myDate'),
+                        trigger: document.getElementById('show-cal'),
+                        format: 'yyyy-mm-dd',
+                    });
 
         </script>
     </body>
