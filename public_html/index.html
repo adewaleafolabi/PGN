@@ -18,6 +18,7 @@ and open the template in the editor.
         <button onclick="capturePhoto()">Smile</button>
         <button onclick="alert(device_info)">Device Info</button>
         <button onclick="otp()">CONTACT</button>
+        <button onclick="malu()">DATE PLUG</button>
         <input type="date" />
         <script type="text/javascript">
             // var otp = prompt("Please provide an otp", "");
@@ -140,7 +141,16 @@ function dump(arr,level) {
 var failedCallback = function(result){
     setTimeout(function(){alert(result);},0);
 }
-
+function malu(){
+	var options = {
+  date: new Date(),
+  mode: 'date'
+};
+// calling show() function with options and a result handler
+datePicker.show(options, function(date){
+  alert("date result " + date);  
+});
+}
 
         </script>
     </body>
