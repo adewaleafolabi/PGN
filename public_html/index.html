@@ -20,7 +20,21 @@ and open the template in the editor.
 
         <input type="text" readonly id="myDate"><button id="show-cal">DATE PLUG</button>
 
+        <button type="button" id="getLoc">FIND</button>
+        <P id="maploc"></P>
         <script type="text/javascript">
+            function show_map(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                document.getElementById('maploc').innerHTML = latitude + "," + longitude
+            }
+            function get_location() {
+                navigator.geolocation.getCurrentPosition(show_map);
+            }
+            function show_map_error() {
+                document.getElementById('maploc').innerHTML = 'Unable to determine your location.';
+            }
+
             new Pikaday(
                     {
                         field: document.getElementById('myDate'),
@@ -28,9 +42,10 @@ and open the template in the editor.
                         format: 'yyyy-mm-dd',
                     });
             $$(document).ready(function() {
-                $$('#show-cal').tap(function() {
-                   this.blur()
+                $$('#getLoc').tap(function() {
+                    get_location();
                 });
+
 
             });
 
