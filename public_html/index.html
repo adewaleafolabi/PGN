@@ -20,7 +20,7 @@ and open the template in the editor.
 
         <input type="text" readonly id="myDate"><button id="show-cal">DATE PLUG</button>
 
-        <button type="button" id="getLoc">FIND</button>
+        <button type="button" id="getLoc" onclick="get_location()">FIND</button>
         <P id="maploc"></P>
         <script type="text/javascript">
             function show_map(position) {
@@ -41,13 +41,13 @@ and open the template in the editor.
                         trigger: document.getElementById('show-cal'),
                         format: 'yyyy-mm-dd',
                     });
-            $$(document).ready(function() {
-                $$('#getLoc').tap(function() {
-                    get_location();
-                });
-
-
-            });
+//            $$(document).ready(function() {
+//                $$('#getLoc').tap(function() {
+//                    get_location();
+//                });
+//
+//
+//            });
 
         </script>
     </body>
