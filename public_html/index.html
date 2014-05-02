@@ -29,7 +29,7 @@ and open the template in the editor.
                 document.getElementById('maploc').innerHTML = latitude + "," + longitude
             }
             function get_location() {
-                navigator.geolocation.getCurrentPosition(show_map);
+                navigator.geolocation.getCurrentPosition(show_map,show_map_error);
             }
             function show_map_error() {
                 document.getElementById('maploc').innerHTML = 'Unable to determine your location.';
