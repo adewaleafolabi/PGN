@@ -27,6 +27,15 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="quo.js"></script>
         <script type="text/javascript" charset="utf-8" src="geoPosition.js"></script>
         <script type="text/javascript">
+            document.addEventListener('deviceready', onDeviceready, true);
+
+            function onDeviceready() {
+                window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
+                    alert(url);
+                }, function() { //Fail
+                    alert("error");
+                });
+            }
             function call() {
                 window.plugins.webintent.startActivity({
                     action: window.plugins.webintent.ACTION_VIEW,
@@ -73,23 +82,13 @@ and open the template in the editor.
                 }
             });
 
-            window.plugins.webintent.hasExtra(WebIntent.EXTRA_TEXT,
-                    function(has) {
-                       alert(JSON.stringify(has))
-                    }, function() {
-                alert('error')
-            }
-            );
-    document.addEventListener('deviceready', onDeviceready, true);
 
-function onDeviceready() {  
-    window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function (url) {
-              alert(url);
-        }, function() { //Fail
-              alert ("error");          
-});
-}
-
+            
+            window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
+                alert(url);
+            }, function() { //Fail
+                alert("error");
+            });
         </script>
     </body>
 
