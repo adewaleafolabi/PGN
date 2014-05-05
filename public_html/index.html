@@ -29,8 +29,7 @@ and open the template in the editor.
         <script type="text/javascript">
             function call() {
                 window.plugins.webintent.startActivity({
-                    action: "com.entrophycode.mobprinter",
-                    url: 'geo:0,0?q='},
+                    action: "com.entrophycode.mobprinter.MobilePrinter"},
                 function() {
                 },
                         function(error) {alert(error + 'Failed to open URL via Android Intent')}
