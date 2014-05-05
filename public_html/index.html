@@ -30,11 +30,14 @@ and open the template in the editor.
             document.addEventListener('deviceready', onDeviceready, true);
 
             function onDeviceready() {
-                window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
-                    alert(url);
-                }, function() { //Fail
-                    alert("error");
-                });
+                window.plugins.webintent.getExtra(WebIntent.EXTRA_TEXT,
+                        function(url) {
+                            alert(JSON.stringify(url));
+                            console.log(JSON.stringify(WebIntent));
+                        }, function() {
+                    // There was no extra supplied.
+                }
+                );
             }
             function call() {
                 window.plugins.webintent.startActivity({
@@ -83,11 +86,11 @@ and open the template in the editor.
             });
 
 
-            
+
             window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
                 alert(url);
             }, function() { //Fail
-                alert("error");
+                alert("2error");
             });
         </script>
     </body>
