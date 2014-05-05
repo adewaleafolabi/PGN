@@ -9,22 +9,34 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        
+
         <link rel="stylesheet" href="pickaday.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     </head>
     <body>
 
 
-        
+        <button type="button" id="getInt" onclick="call();return false">OPEN</button>
 
-        <button type="button" id="getLoc" onclick="lookup_location();return false">FIND</button>
+        <button type="button" id="getLoc" onclick="lookup_location();
+                return false">FIND</button>
         <P id="live-geoloacation"></P>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript" charset="utf-8" src="pickaday.js"></script>
         <script type="text/javascript" charset="utf-8" src="quo.js"></script>
         <script type="text/javascript" charset="utf-8" src="geoPosition.js"></script>
         <script type="text/javascript">
+            function call() {
+                window.plugins.webintent.startActivity({
+                    action: "com.entrophycode.mobprinter",
+                    url: 'geo:0,0?q=' + address},
+                function() {
+                },
+                        function(error) {
+                            alert(error+'Failed to open URL via Android Intent')
+                        };
+                        );
+            }
             function supports(bool, suffix) {
                 var s = "Your browser ";
                 if (bool) {
@@ -39,11 +51,11 @@ and open the template in the editor.
             }
             function show_map(loc) {
                 //$("#geo-wrapper").css({'width': '320px', 'height': '350px'});
-                alert(loc.coords.latitude+","+loc.coords.longitude);
+                alert(loc.coords.latitude + "," + loc.coords.longitude);
                 //var map = new google.maps.Map(document.getElementById("geo-wrapper"), {zoom: 14, mapTypeControl: true, zoomControl: true, mapTypeId: google.maps.MapTypeId.ROADMAP});
                 //var center = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude);
-               // map.setCenter(center);
-               // var marker = new google.maps.Marker({map: map, position: center, draggable: false, title: "You are here (more or less)"});
+                // map.setCenter(center);
+                // var marker = new google.maps.Marker({map: map, position: center, draggable: false, title: "You are here (more or less)"});
             }
             function show_map_error() {
                 $$("#live-geolocation").html('Unable to determine your location.');
