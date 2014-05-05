@@ -28,11 +28,11 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="geoPosition.js"></script>
         <script type="text/javascript">
             function call() {
-                window.plugins.webintent.sendBroadcast({
-                    action: "com.entrophycode.mobprinter.MobilePrinter",
-                    extras: {
-                        'option': true
-                    }
+                window.plugins.webintent.startActivity({
+                    action:  window.plugins.webintent.ACTION_VIEW//,
+//                    extras: {
+//                        'option': true
+//                    }
                 },
                 function() {
                 },
