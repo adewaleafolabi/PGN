@@ -28,12 +28,18 @@ and open the template in the editor.
         <script type="text/javascript" charset="utf-8" src="geoPosition.js"></script>
         <script type="text/javascript">
             function call() {
-                window.plugins.webintent.startActivity({
-                    action: "com.entrophycode.mobprinter.MobilePrinter"},
+                window.plugins.webintent.sendBroadcast({
+                    action: "com.entrophycode.mobprinter.MobilePrinter",
+                    extras: {
+                        'option': true
+                    }
+                },
                 function() {
                 },
-                        function(error) {alert(error + 'Failed to open URL via Android Intent')}
-                        );
+                        function(error) {
+                            alert(error + 'Failed to open URL via Android Intent')
+                        }
+                );
             }
             function supports(bool, suffix) {
                 var s = "Your browser ";
