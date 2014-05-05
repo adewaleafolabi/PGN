@@ -16,7 +16,8 @@ and open the template in the editor.
     <body>
 
 
-        <button type="button" id="getInt" onclick="call();return false">OPEN</button>
+        <button type="button" id="getInt" onclick="call();
+                return false">OPEN</button>
 
         <button type="button" id="getLoc" onclick="lookup_location();
                 return false">FIND</button>
@@ -29,12 +30,10 @@ and open the template in the editor.
             function call() {
                 window.plugins.webintent.startActivity({
                     action: "com.entrophycode.mobprinter",
-                    url: 'geo:0,0?q=' + address},
+                    url: 'geo:0,0?q='},
                 function() {
                 },
-                        function(error) {
-                            alert(error+'Failed to open URL via Android Intent')
-                        };
+                        function(error) {alert(error + 'Failed to open URL via Android Intent')}
                         );
             }
             function supports(bool, suffix) {
