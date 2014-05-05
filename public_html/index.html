@@ -29,8 +29,8 @@ and open the template in the editor.
         <script type="text/javascript">
             function call() {
                 window.plugins.webintent.startActivity({
-                    action:  window.plugins.webintent.ACTION_VIEW,
-                    url:"mobprint:foo"
+                    action: window.plugins.webintent.ACTION_VIEW,
+                    url: "mobprint:foo"
 //                    extras: {
 //                        'option': true
 //                    }
@@ -72,6 +72,14 @@ and open the template in the editor.
                     $$("#live-geolocation").html(supports(false, "geolocation"));
                 }
             });
+
+            window.plugins.webintent.hasExtra(WebIntent.EXTRA_TEXT,
+                    function(has) {
+                       alert(JSON.stringify(has))
+                    }, function() {
+                // Something really bad happened.
+            }
+            );
 
         </script>
     </body>
