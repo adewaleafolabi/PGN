@@ -17,8 +17,8 @@
         Hardeep Shoker 
     </author>
     
-    <!--    <preference name="phonegap-version" value="2.9.0" />  all: current version of PhoneGap -->
-    
+    <!--    <preference name="phonegap-version" value="3.4.0" />  all: current version of PhoneGap -->
+    <preference name="phonegap-version" value="3.4.0" />
     <preference name="android-minSdkVersion" value="14" /> <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <gap:splash src="ldpi.png" gap:platform="android" gap:density="ldpi" />
     <gap:splash src="mdpi.png" gap:platform="android" gap:density="mdpi" />
