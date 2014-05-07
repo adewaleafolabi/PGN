@@ -32,6 +32,7 @@
     <gap:plugin name="hu.dpal.phonegap.plugins.pindialog" version="0.1.2" />
     <gap:plugin name="hu.dpal.phonegap.plugins.contactnumberpicker" version="0.1.1" />
     <gap:plugin name="net.tunts.webintent" version="0.2.1" />
+    <gap:plugin name="uk.co.ibcomputing.phonegapbuild.plugins.receivesendintents" version="0.1.0" />
     <gap:plugin name="com.plugin.datepicker" version="0.3.2" />
     <gap:platform name="android" />
 
