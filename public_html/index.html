@@ -16,7 +16,7 @@ and open the template in the editor.
     <body>
 
 
-        <button type="button" id="getInt" onclick="call();
+        <button type="button" id="getInt" onclick="callo();
                 return false">OPEN</button>
 
         <button type="button" id="getLoc" onclick="lookup_location();
@@ -30,12 +30,28 @@ and open the template in the editor.
             document.addEventListener('deviceready', onDeviceready, true);
 
             function onDeviceready() {
-                
-                window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
-                    alert(JSON.stringify(url));
-                }, function() { //Fail
-                    alert("error");
-                });
+
+                window.plugins.webintent.getExtra(WebIntent.EXTRA_TEXT,
+                        function(url) {
+                            alert(url."nothing");
+
+                        }, function() {
+                    alert('notin to read');
+                }
+                );
+            }
+            function callo() {
+                window.plugins.webintent.startActivity(
+                        {
+                            action: window.plugins.webintent.ACTION_MAIN,
+                            handler: {packageName: 'com.datecs.audioreaderemv', className: 'com.datecs.audioreaderemv.MainActivity'}
+                        },
+                function() {
+                },
+                        function() {
+                            alert('Failed to open URL via Android Intent')
+                        }
+                );
             }
             function call() {
                 window.plugins.webintent.startActivity({
@@ -84,7 +100,7 @@ and open the template in the editor.
             });
 
 
-            
+
             window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
                 alert(JSON.stringify(url));
                 alert('here');
