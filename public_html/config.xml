@@ -34,9 +34,7 @@
     <gap:plugin name="net.tunts.webintent" version="0.2.1" />
     <gap:plugin name="uk.co.ibcomputing.phonegapbuild.plugins.receivesendintents" version="0.1.0" />
     
-    <gap:plugin name="nl.x-services.plugins.launchmyapp">
-        <param: name="URL_SCHEME" value="mycoolappz" />
-    </gap:plugin>
+    
     <gap:plugin name="com.plugin.datepicker" version="0.3.2" />
     <gap:platform name="android" />
 
