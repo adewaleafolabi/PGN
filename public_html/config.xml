@@ -27,6 +27,7 @@
     <gap:splash src="xxhdpi.png" gap:platform="android" gap:density="xxhdpi" />
 
     <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="hu.dpal.phonegap.plugins.pindialog" version="0.1.2" />

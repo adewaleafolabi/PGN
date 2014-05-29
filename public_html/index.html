@@ -29,84 +29,30 @@ and open the template in the editor.
         <script type="text/javascript">
             document.addEventListener('deviceready', onDeviceready, true);
 
+            
+            var onSuccess = function(position) {
+                alert('Latitude: ' + position.coords.latitude + '\n' +
+                        'Longitude: ' + position.coords.longitude + '\n' +
+                        'Altitude: ' + position.coords.altitude + '\n' +
+                        'Accuracy: ' + position.coords.accuracy + '\n' +
+                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+                        'Heading: ' + position.coords.heading + '\n' +
+                        'Speed: ' + position.coords.speed + '\n' +
+                        'Timestamp: ' + position.timestamp + '\n');
+            };
+
+// onError Callback receives a PositionError object
+//
+            function onError(error) {
+                alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+            }
+            
             function onDeviceready() {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            }
+            
 
-                window.plugins.webintent.getExtra(WebIntent.EXTRA_TEXT,
-                        function(url) {
-                            alert(url."nothing");
-
-                        }, function() {
-                    alert('notin to read');
-                }
-                );
-            }
-            function callo() {
-                window.plugins.webintent.startActivity(
-                        {
-                            action: window.plugins.webintent.ACTION_MAIN,
-                            handler: {packageName: 'com.datecs.audioreaderemv', className: 'com.datecs.audioreaderemv.MainActivity'}
-                        },
-                function() {
-                },
-                        function() {
-                            alert('Failed to open URL via Android Intent')
-                        }
-                );
-            }
-            function call() {
-                window.plugins.webintent.startActivity({
-                    action: window.plugins.webintent.ACTION_VIEW,
-                    url: "mobprint:foo"
-//                    extras: {
-//                        'option': true
-//                    }
-                },
-                function() {
-                },
-                        function(error) {
-                            alert(error + 'Failed to open URL via Android Intent')
-                        }
-                );
-            }
-            function supports(bool, suffix) {
-                var s = "Your browser ";
-                if (bool) {
-                    s += "supports " + suffix + ".";
-                } else {
-                    s += "does not support " + suffix + ". :(";
-                }
-                return s;
-            }
-            function lookup_location() {
-                geoPosition.getCurrentPosition(show_map, show_map_error);
-            }
-            function show_map(loc) {
-                //$("#geo-wrapper").css({'width': '320px', 'height': '350px'});
-                alert(loc.coords.latitude + "," + loc.coords.longitude);
-                //var map = new google.maps.Map(document.getElementById("geo-wrapper"), {zoom: 14, mapTypeControl: true, zoomControl: true, mapTypeId: google.maps.MapTypeId.ROADMAP});
-                //var center = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude);
-                // map.setCenter(center);
-                // var marker = new google.maps.Marker({map: map, position: center, draggable: false, title: "You are here (more or less)"});
-            }
-            function show_map_error() {
-                $$("#live-geolocation").html('Unable to determine your location.');
-            }
-            $$(function() {
-                if (geoPosition.init()) {
-                    $$("#live-geolocation").html(supports(true, "geolocation") + ' <a href="#" onclick="lookup_location();return false">Click to look up your location</a>.');
-                } else {
-                    $$("#live-geolocation").html(supports(false, "geolocation"));
-                }
-            });
-
-
-
-            window.plugins.webintent.getExtra(window.plugins.webintent.EXTRA_TEXT, function(url) {
-                alert(JSON.stringify(url));
-                alert('here');
-            }, function() { //Fail
-                alert("error");
-            });
         </script>
     </body>
 
