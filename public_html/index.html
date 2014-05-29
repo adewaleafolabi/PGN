@@ -9,49 +9,45 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="pickaday.js"></script>
+        <script type="text/javascript" charset="utf-8" src="quo.js"></script>
         <link rel="stylesheet" href="pickaday.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     </head>
     <body>
 
 
-        <button type="button" id="getInt" onclick="callo();
-                return false">OPEN</button>
+        <input type="text" readonly id="myDate"><button id="show-cal">DATE PLUG</button>
 
-        <button type="button" id="getLoc" onclick="lookup_location();
-                return false">FIND</button>
-        <P id="live-geoloacation"></P>
-        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-        <script type="text/javascript" charset="utf-8" src="pickaday.js"></script>
-        <script type="text/javascript" charset="utf-8" src="quo.js"></script>
-        <script type="text/javascript" charset="utf-8" src="geoPosition.js"></script>
+        <button type="button" id="getLoc">FIND</button>
+        <P id="maploc"></P>
         <script type="text/javascript">
-            document.addEventListener('deviceready', onDeviceready, true);
-
-            
-            var onSuccess = function(position) {
-                alert('Latitude: ' + position.coords.latitude + '\n' +
-                        'Longitude: ' + position.coords.longitude + '\n' +
-                        'Altitude: ' + position.coords.altitude + '\n' +
-                        'Accuracy: ' + position.coords.accuracy + '\n' +
-                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-                        'Heading: ' + position.coords.heading + '\n' +
-                        'Speed: ' + position.coords.speed + '\n' +
-                        'Timestamp: ' + position.timestamp + '\n');
-            };
-
-// onError Callback receives a PositionError object
-//
-            function onError(error) {
-                alert('code: ' + error.code + '\n' +
-                        'message: ' + error.message + '\n');
+            function show_map(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                document.getElementById('maploc').innerHTML = latitude + "," + longitude;
             }
-            
-            function onDeviceready() {
-                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            function get_location() {
+                navigator.geolocation.getCurrentPosition(show_map,show_map_error);
             }
-            
+            function show_map_error() {
+                document.getElementById('maploc').innerHTML = 'Unable to determine your location.';
+            }
+
+            new Pikaday(
+                    {
+                        field: document.getElementById('myDate'),
+                        trigger: document.getElementById('show-cal'),
+                        format: 'yyyy-mm-dd',
+                    });
+            $$(document).ready(function() {
+                $$('#getLoc').tap(function() {
+                    get_location();
+                });
+
+
+            });
 
         </script>
     </body>
